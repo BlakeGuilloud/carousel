@@ -9,9 +9,13 @@ class App extends Component {
     const file = event.target.files[0];
 
     reader.addEventListener('load', () => {
-      const fileData = reader.result;
+      const payload = {
+        fileData: reader.result,
+        fileName: file.name,
+        fileType: file.type,
+      };
 
-      Actions.uploadFile(fileData);
+      Actions.uploadFile(payload);
 
     }, false);
 
